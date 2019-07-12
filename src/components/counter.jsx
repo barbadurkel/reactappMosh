@@ -17,7 +17,12 @@ export class Counter extends Component {
 
     //2nd way to bind : converting to arrow function (that inherit the this keyword)
     handleIncrement = () => {
-            console.log("Increment Clicked", this);
+        // setState() tells React that a change has occured so that it updates the DOM
+            this.setState({
+                count: this.state.count + 1
+            })  ;
+        
+
     }
 
 
