@@ -8,12 +8,20 @@ export class Counter extends Component {
     };
     
 
-    constructor(){
-        super();
-        // we bind the handleIncrement method to this
-        this.handleIncrement = this.handleIncrement.bind(this);
+    // constructor(){
+    //     super();
+    //     // we bind the handleIncrement method to this
+    //     this.handleIncrement = this.handleIncrement.bind(this);
 
+    // }
+
+    //2nd way to bind : converting to arrow function (that inherit the this keyword)
+    handleIncrement = () => {
+            console.log("Increment Clicked", this);
     }
+
+
+
     renderTags(){
         if(this.state.tags.length === 0) return <p>No tags.</p>
         return <ul>{this.state.tags.map( tag => <li key={tag}>{tag}</li>)}</ul>;
