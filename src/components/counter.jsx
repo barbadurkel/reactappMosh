@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class Counter extends Component {
     state = {
-        count : 0,
+        count : this.props.value,
         tags: []
     
     };
@@ -18,7 +18,7 @@ export class Counter extends Component {
     //2nd way to bind : converting to arrow function (that inherit the this keyword)
     handleIncrement = () => {
         // setState() tells React that a change has occured so that it updates the DOM
-            this.setState({
+        this.setState({
                 count: this.state.count + 1
             })  ;
         
@@ -38,26 +38,25 @@ export class Counter extends Component {
         (or undefined if use strict) => MUST bind() the standalone function
         */
 
-    handleIncrement(){
-        console.log('Increment Clicked', this);
-        // obj.method
-    }
-
 
 
     render() {
+
+
+        console.log('props', this.props);
+
         return (
            <div>
                {/* In JS, you can apply logical operations 
             between non boolean values, hence the use of the string below which
             the expression 'boolean && a && b ' will return the last operand : b! */}
 
-               {this.state.tags.length === 0 && 'Please create a new tag!'}
-               {this.renderTags()}
+               {/* {this.state.tags.length === 0 && 'Please create a new tag!'}
+               {this.renderTags()} */}
 
                
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+            <button onClick= { () => this.handleIncrement()} className="btn btn-secondary btn-sm">Increment</button>
            </div>
         );
     }
